@@ -1,0 +1,7 @@
+useReducer
+
+state
+initialState
+actions
+payload 
+dispatch
