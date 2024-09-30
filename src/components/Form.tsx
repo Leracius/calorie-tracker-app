@@ -1,15 +1,9 @@
 import { categories } from "../data/categories";
 import { useState } from "react";
 import { Activity } from "../types";
-import { Dispatch } from "react";
-import { ActivityActions, ActivityState } from "../reducers/activtiy-reducer";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
-
-type FormProps = {
-  dispatch: Dispatch<ActivityActions>;
-  state: ActivityState;
-};
+import { useActivity } from "../hooks/useActivity";
 
 //estado inicial
 const initialState: Activity = {
@@ -19,8 +13,9 @@ const initialState: Activity = {
   calories: 0,
 };
 
-export default function Form({ dispatch, state }: FormProps) {
+export default function Form() {
   //estado mas generico para lamacenar un objeto de estado
+  const { state, dispatch } = useActivity();
   const [activity, setActivity] = useState<Activity>(initialState);
 
   useEffect(() => {
